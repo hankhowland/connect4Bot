@@ -1,0 +1,45 @@
+<style>
+    .red-piece {
+        background-color:red;
+        border-radius:50%;
+        height:50px;
+        width:50px;
+    }
+    .black-piece {
+        background:black;
+        border-radius:50%;
+        height:50px;
+        width:50px;
+    }
+    .spot {
+        background:lightgrey;
+        border-radius:50%;
+        height:50px;
+        width:50px;
+    }
+    table td {
+        padding:5px;
+    }
+</style>
+
+
+
+<div style="padding:20px;">
+    <h1>CONNECT FOUR BOT</h1>
+    <p>Type a move column in the form and press enter to start the game.</p>
+    <table id="gameTable" border="1" style="border-spacing:0;">
+        <tr id="0" style="text-align:center;">
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <form onSubmit="playMove()">
+        enter move column:
+        <input type="text" id="colnum">
+        <input id="playmove" type="submit" value="play move">
+    </div>
+</div>
+
+
+<script src="script.js"></script>
