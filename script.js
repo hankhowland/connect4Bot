@@ -30,12 +30,6 @@ const construct_board = () => {
         html += '</tr>'
         tableElement.innerHTML += html
     }
-    if (current_player == 1) {
-        turnE.innerHTML = 'red'
-    }
-    else {
-        turnE.innerHTML = 'black'
-    }
 }
 
 
@@ -44,7 +38,14 @@ playE.addEventListener("click", (e) => {
     var colnumInput = document.getElementById("colnum")
     var colnum = colnumInput.value
     board[colnum-1].push(current_player)
+    if (game_over(board)[1] == 1) {
+        document.getElementById("someoneWon").innerHTML = 'RED WON'
+    }
+    if (game_over(board)[1] == 0) {
+        document.getElementById("someoneWon").innerHTML = 'BLACK WON'
+    }
     move_depth_5(board, other_player(current_player))
+
     colnumInput.value = '';
     construct_board()
 })
@@ -306,6 +307,9 @@ function move_depth_5(board, player) {
             test_board[coli].push(player)
             if (game_over(test_board)[1] == player) {
                 col_scores[coli] = 2000
+            }
+            else if (one_three_in_a_row(test_board, player)) {
+                col_scores[coli] = -2000
             }
             else {
                 score = move_depth_4(test_board, player)
