@@ -284,6 +284,7 @@ function move_depth_4(board, player) {
     var test_board = clone(board)
     move_depth_3(test_board, otherP)
     if (game_over(test_board)[1] == otherP) {
+        console.log('returning -2000 from move_depth_4');
         return -2000
     }
     else {
@@ -308,7 +309,8 @@ function move_depth_5(board, player) {
             if (game_over(test_board)[1] == player) {
                 col_scores[coli] = 2000
             }
-            else if (one_three_in_a_row(test_board, player)) {
+            else if (one_three_in_a_row(test_board, other_player(player)) != -1) {
+                console.log('returning -2000 from move_depth_5');
                 col_scores[coli] = -2000
             }
             else {
@@ -317,6 +319,7 @@ function move_depth_5(board, player) {
             }
         }
     }
+    console.log(col_scores);
     var col_to_play = get_max_col(col_scores) 
     board[col_to_play].push(player)
 }
