@@ -45,7 +45,12 @@ playE.addEventListener("click", (e) => {
         document.getElementById("someoneWon").innerHTML = 'BLACK WON'
     }
     move_depth_5(board, other_player(current_player))
-
+    if (game_over(board)[1] == 1) {
+        document.getElementById("someoneWon").innerHTML = 'RED WON'
+    }
+    if (game_over(board)[1] == 0) {
+        document.getElementById("someoneWon").innerHTML = 'BLACK WON'
+    }
     colnumInput.value = '';
     construct_board()
 })
